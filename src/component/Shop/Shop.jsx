@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Product from '../Product/Product';
 
 const Shop = () => {
+    const handlerAddToCart=()=>console.log('product add');
 
     const [products,useProducts]=useState([]);
     useEffect(()=>{
@@ -16,7 +17,7 @@ const Shop = () => {
         <section className='product-container grid grid-cols-5'>
         <div className="products col-span-4 grid grid-cols-3 gap-3 p-10">
             {
-                products.map(product=> <Product product={product} key={product.id}></Product>)
+                products.map(product=> <Product product={product} handlerAddToCart={handlerAddToCart} key={product.id}></Product>)
             }
         </div>
         <div className="cart">
