@@ -2,6 +2,7 @@ import { data } from 'autoprefixer';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 
 
@@ -9,7 +10,7 @@ const Shop = () => {
 
     const [products, useProducts] = useState([]);
 
-    const [cart, setCart]=useState([])
+    const [cart, setCart] = useState([])
     useEffect(() => {
         fetch('../../../public/fakeData/products.json')
             .then(res => res.json())
@@ -18,12 +19,12 @@ const Shop = () => {
 
 
 
-    const handlerAddToCart = (item) => {      
+    const handlerAddToCart = (item) => {
 
-        
-        const newCart=[...cart,item]
+
+        const newCart = [...cart, item]
         setCart(newCart)
-        
+
 
     };
     return (
@@ -34,9 +35,11 @@ const Shop = () => {
                 }
             </div>
             <div className="cart my-5 bg-orange-200 p-3 rounded">
-                <h1 className='text-3xl'>Order Summary</h1>
-                <div className='mt-10'>
-                    <p>Selected Item: {cart.length}</p>
+                <div className=' sticky top-0'>
+                    <h1 className='text-3xl'>Order Summary</h1>
+                    <div className=' mt-10'>
+                        <Cart cart={cart}></Cart>
+                    </div>
                 </div>
             </div>
 
